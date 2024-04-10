@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="text-center text-success">Conversor de Divisas</h3>
+      <div class="form-group">
+        <label for="" class="form-label">Cantidad</label>
+        <input
+          [(ngModel)]="cantidad"
+          (input)="convertir()"
+          type="number"
+          class="form-control form-control-lg"
+          placeholder="$50"
+        />
+        <small id="helpId" class="form-text text-muted"
+          >Moneda a ser cambiada</small
+        >
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="text-center text-success">Seleccionar Moneda de Origen</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="" class="form-label">Moneda de Origen</label>
+            <select
+              class="form-select form-select-lg"
+              (change)="convertir()"
+              [(ngModel)]="monedaActual"
+            >
+              <option *ngFor="let i of monedas">
+                {{ i }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="text-center text-primary">
+            Seleccionar Moneda de Destino
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="" class="form-label">Moneda de Destino</label>
+            <select
+              class="form-select form-select-lg"
+              (change)="convertir()"
+              [(ngModel)]="monedaDestino"
+            >
+              <option *ngFor="let x of monedas">
+                {{ x }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-center text-primary" *ngIf="total > 0">
+    {{ cantidad }} {{ monedaActual }} son {{ total | number }}
+    {{ monedaDestino }}
+  </h2>
+</div>
